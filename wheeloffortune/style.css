@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background: linear-gradient(135deg, #c9f7ef 0%, #86e3d8 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  background: linear-gradient(135deg, #2bb7a1 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h3 {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+/* 입력 섹션 */
+.input-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+#itemsInput {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+#itemsInput:focus {
+  outline: none;
+  border-color: #2bb7a1;
+}
+
+/* 휠 섹션 */
+.wheel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.wheel-container {
+  position: relative;
+  width: 550px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* 12시 포인터 */
+.pointer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 20px solid #ff6b6b;
+  z-index: 10;
+}
+
+#wheelCanvas {
+  border: 3px solid #e0e0e0;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 버튼 섹션 */
+.button-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* 버튼 */
+.btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2bb7a1 0%, #06b6d4 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(43, 183, 161, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  font-size: 1.1em;
+  padding: 14px 40px;
+}
+
+.btn-success:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-success:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#spinBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* 결과 섹션 */
+.result-section {
+  padding: 20px;
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  border-radius: 8px;
+}
+
+.result-display {
+  padding: 15px;
+  background: white;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #333;
+  min-height: 30px;
+}
+
+/* 반응형 */
+@media print {
+  body,
+  .container,
+  .input-section,
+  .button-section {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .input-section,
+  .button-section {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .wheel-container {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  #wheelCanvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #itemsInput {
+    height: 100px;
+  }
+}

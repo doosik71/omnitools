@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>행운의 바퀴 - Wheel of Fortune</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎡 행운의 수레바퀴 🍀</h1>
+
+      <!-- 입력 섹션 -->
+      <div class="input-section">
+        <textarea
+          id="itemsInput"
+          placeholder="쉼표(,)로 항목을 구분해 입력하세요&#10;예: 빨강, 파랑, 노랑, 초록"
+        ></textarea>
+        <button id="loadBtn" class="btn btn-primary">항목 저장</button>
+      </div>
+
+      <!-- 휠 섹션 -->
+      <div class="wheel-section">
+        <div class="wheel-container">
+          <!-- 12시 방향 포인터 -->
+          <div class="pointer"></div>
+          <!-- 휠 캔버스 -->
+          <canvas id="wheelCanvas" width="500" height="500"></canvas>
+        </div>
+      </div>
+
+      <!-- 버튼 섹션 -->
+      <div class="button-section">
+        <button id="spinBtn" class="btn btn-success" disabled>회전</button>
+      </div>
+
+      <!-- 결과 섹션 -->
+      <div class="result-section">
+        <h3>선택된 항목</h3>
+        <div id="result" class="result-display">
+          항목을 추가하고 회전 버튼을 클릭하세요
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
