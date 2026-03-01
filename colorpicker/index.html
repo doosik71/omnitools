@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Color Picker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🎨 Color Picker</h1>
+      <p>
+        Select a text color and a background color to preview their combination.
+      </p>
+    </header>
+
+    <section class="preview-wrap">
+      <div id="preview" class="preview">
+        <h2>Color Picker</h2>
+        <div><b>OmniTools</b> Color Preview</div>
+      </div>
+    </section>
+
+    <main>
+      <div class="controls">
+        <div class="col">
+          <h2>Text Color</h2>
+          <div class="picker">
+            <input type="color" id="color-text" value="#000000" />
+          </div>
+          <div class="results">
+            <div>
+              <label for="hex-text">HEX</label>
+              <input type="text" id="hex-text" readonly />
+              <button id="copy-hex-text" title="복사">📋</button>
+            </div>
+            <div>
+              <label for="rgb-text">RGB</label>
+              <input type="text" id="rgb-text" readonly />
+              <button id="copy-rgb-text" title="복사">📋</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="swap-btn" class="swap" title="교환">
+          <div class="swap-icon">🔁</div>
+          <div class="swap-text">Swap</div>
+        </button>
+
+        <div class="col">
+          <h2>Background Color</h2>
+          <div class="picker">
+            <input type="color" id="color-bg" value="#ffffff" />
+          </div>
+          <div class="results">
+            <div>
+              <label for="hex-bg">HEX</label>
+              <input type="text" id="hex-bg" readonly />
+              <button id="copy-hex-bg" title="복사">📋</button>
+            </div>
+            <div>
+              <label for="rgb-bg">RGB</label>
+              <input type="text" id="rgb-bg" readonly />
+              <button id="copy-rgb-bg" title="복사">📋</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+
+    <section class="color-names-section">
+      <h2>HTML Color Names</h2>
+      <div id="color-list" class="color-list"></div>
+    </section>
+  </body>
+</html>
