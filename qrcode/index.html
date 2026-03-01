@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR 코드 생성기</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>QR Code Generator</h1>
+
+      <div class="input-section">
+        <label for="qrInput">Input text or URL:</label>
+        <textarea
+          id="qrInput"
+          placeholder="Enter the text you want to convert into a QR code..."
+          rows="4"
+        ></textarea>
+        <div class="char-counter"><span id="byteCount">0</span>/2953 bytes</div>
+        <button id="generateBtn">Generate QR Code</button>
+      </div>
+
+      <div class="output-section">
+        <div id="qrCode" class="qr-code-container"></div>
+        <button id="downloadBtn" class="download-btn" disabled>Download</button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

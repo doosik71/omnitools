@@ -68,6 +68,7 @@ python -m http.server 5500
 ```
 
 이후 브라우저에서 `http://localhost:5500/` 접속.
+또는 `https://omnitools.doosik71.workers.dev/` 접속.
 
 ## 라이선스
 
