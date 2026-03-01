@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markeddy - Stateless Markdown Editor</title>
+
+    <!-- Milkdown v7 Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/@milkdown/theme-nord/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@milkdown/preset-commonmark/style.css" />
+    <!-- Menu Plugin Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/@milkdown-lab/plugin-menu/style.css" />
+    <!-- Material Icons for Toolbar -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" href="style.css" />
+
+
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-logo">
+        <h1>📝 Markeddy</h1>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="window.copyUrl()">
+          Copy URL 🔗
+        </button>
+      </div>
+    </header>
+
+    <main id="editor-container">
+      <div id="app" class="milkdown"></div>
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

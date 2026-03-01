@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>OmniTools — 도구 허브</title>
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --accent: #2563eb;
+        --text: #0f1724;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family:
+          Inter,
+          Segoe UI,
+          Arial,
+          sans-serif;
+        background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 60%);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 32px auto;
+        padding: 24px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 20px;
+      }
+      p.lead {
+        margin: 4px 0 18px;
+        color: var(--muted);
+      }
+      .search {
+        display: flex;
+        gap: 8px;
+        margin: 14px 0;
+      }
+      input[type="search"] {
+        flex: 1;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(15, 23, 36, 0.06);
+        background: #fff;
+        color: var(--text);
+        box-shadow: 0 1px 2px rgba(2, 6, 23, 0.04);
+      }
+      #clear {
+        background: transparent;
+        border: none;
+        color: var(--muted);
+        padding: 6px 8px;
+        border-radius: 6px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .card {
+        background: var(--card);
+        padding: 14px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+        border: 1px solid rgba(2, 6, 23, 0.04);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .card a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .title {
+        font-weight: 600;
+      }
+      .desc {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .badge {
+        background: rgba(2, 6, 23, 0.04);
+        padding: 6px 8px;
+        border-radius: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      footer {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      @media (max-width: 420px) {
+        .wrap {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div style="display: flex; flex-direction: column">
+          <h1>OmniTools — 도구 허브</h1>
+          <p class="lead">
+            작은 웹 도구 모음입니다. 아래 도구를 클릭해 실행하세요.
+          </p>
+        </div>
+      </header>
+
+      <div class="search">
+        <input
+          id="q"
+          type="search"
+          placeholder="도구 검색 (예: color, qr, markdown)"
+          aria-label="search"
+        />
+      </div>
+
+      <div id="grid" class="grid">
+        <div class="card" data-tags="color picker">
+          <a href="colorpicker/">
+            <div class="title">🎨 Color Picker</div>
+            <div class="desc">색을 고르고 코드(CSS/HEX)를 복사합니다.</div>
+            <div class="meta">
+              <span class="badge">colorpicker/</span
+              ><span class="badge">웹</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="card" data-tags="markdown editor markeddy">
+          <a href="markeddy/index.html">
+            <div class="title">📝 Markeddy</div>
+            <div class="desc">간단한 마크다운 편집기 및 미리보기.</div>
+            <div class="meta">
+              <span class="badge">markeddy/</span><span class="badge">웹</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="card" data-tags="qr qrcode generator">
+          <a href="qrcode/">
+            <div class="title">🔲 QR Code</div>
+            <div class="desc">텍스트/URL을 QR 코드로 생성합니다.</div>
+            <div class="meta">
+              <span class="badge">qrcode/</span><span class="badge">웹</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <footer>
+        저장소 루트의 도구 폴더로 바로 연결됩니다. 필요하면 항목을 추가하거나
+        정렬해드릴게요.
+      </footer>
+    </div>
+
+    <script>
+      const q = document.getElementById("q");
+      const grid = document.getElementById("grid");
+      const clear = document.getElementById("clear");
+      function filter(term) {
+        const cards = grid.querySelectorAll(".card");
+        const t = term.trim().toLowerCase();
+        cards.forEach((c) => {
+          const tags = c.dataset.tags || "";
+          const title = c.querySelector(".title").textContent.toLowerCase();
+          const desc = c.querySelector(".desc").textContent.toLowerCase();
+          const ok =
+            !t || tags.includes(t) || title.includes(t) || desc.includes(t);
+          c.style.display = ok ? "" : "none";
+        });
+      }
+      q.addEventListener("input", (e) => filter(e.target.value));
+      clear.addEventListener("click", () => {
+        q.value = "";
+        filter("");
+        q.focus();
+      });
+      // quick keyboard focus
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "/" && document.activeElement !== q) {
+          e.preventDefault();
+          q.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
